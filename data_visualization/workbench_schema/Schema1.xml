@@ -1,0 +1,62 @@
+<Schema name="New Schema1">
+  <Cube name="Cubeolap" visible="true" cache="true" enabled="true">
+    <Table name="retail_stores_sales">
+    </Table>
+    <Dimension type="StandardDimension" visible="true" foreignKey="Customer_id" highCardinality="false" name="customer_dim">
+      <Hierarchy name="customer" visible="true" hasAll="true" primaryKey="Customer_id">
+        <Table name="customer_dim">
+        </Table>
+        <Level name="customer_id " visible="true" table="customer_dim" column="Customer_id" nameColumn="Customer_id" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Customer_name" visible="true" table="customer_dim" column="Customer_name" nameColumn="Customer_name" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="customer_age" visible="true" table="customer_dim" column="Age" nameColumn="Age" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Annual_income" visible="true" table="customer_dim" column="Annual_Income" nameColumn="Annual_Income" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="memebership" visible="true" table="customer_dim" column="Membership" nameColumn="Membership" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="spending_score" visible="true" table="customer_dim" column="Spending_Score" nameColumn="Spending_Score" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="Store_id" highCardinality="false" name="store">
+      <Hierarchy name="store " visible="true" hasAll="true" primaryKey="Store_id">
+        <Table name="store_dim">
+        </Table>
+        <Level name="store_id" visible="true" table="store_dim" column="Store_id" nameColumn="Store_id" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Store_area" visible="true" table="store_dim" column="Store_Area" nameColumn="Store_Area" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Items_available" visible="true" table="store_dim" column="Items_Available" nameColumn="Items_Available" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="Transaction_id" highCardinality="false" name="transaction">
+      <Hierarchy name="transaction" visible="true" hasAll="true" primaryKey="Transaction_id">
+        <Table name="transaction_dim">
+        </Table>
+        <Level name="New Lpayment_method" visible="true" table="transaction_dim" column="Payment_Method" nameColumn="Payment_Method" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="transaction_id" visible="true" table="transaction_dim" column="Transaction_id" nameColumn="Transaction_id" type="Numeric" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="promotion" visible="true" table="transaction_dim" column="Promotion" nameColumn="Promotion" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Dimension type="StandardDimension" visible="true" foreignKey="Time_id" highCardinality="false" name="time">
+      <Hierarchy name="time" visible="true" hasAll="true" primaryKey="Time_id">
+        <Table name="time_dim">
+        </Table>
+        <Level name="time_id" visible="true" table="time_dim" column="Time_id" nameColumn="Time_id" type="Integer" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="Time_column" visible="true" table="time_dim" column="Time" nameColumn="Time" type="Timestamp" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+        <Level name="season" visible="true" table="time_dim" column="Season" nameColumn="Season" type="String" uniqueMembers="false" levelType="Regular" hideMemberIf="Never">
+        </Level>
+      </Hierarchy>
+    </Dimension>
+    <Measure name="counter" column="Store_id" datatype="Integer" aggregator="count" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
